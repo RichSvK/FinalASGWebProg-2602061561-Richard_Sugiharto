@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\FriendController;
+use App\Http\Controllers\FriendRequestController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TopUpController;
 use App\Http\Controllers\UserAvatarController;
@@ -31,3 +33,7 @@ Route::post('/buy-avatar', [UserAvatarController::class, 'create'])->name('buyAv
 Route::post('/equip-avatar', [UserAvatarController::class, 'equip'])->name('equipAvatar');
 Route::get('/setting', [UserController::class, 'index'])->name('setting');
 Route::post('/change-visibility', [UserController::class, 'changeVisibility'])->name('changeVisibility');
+
+Route::get('/friends', [FriendController::class, 'index'])->name('friends');
+Route::post('/add-friend', [FriendRequestController::class, 'addFriend'])->name('addFriend');
+Route::delete('/delete-friend', [FriendController::class, 'destroy'])->name('unfriend');

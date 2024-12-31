@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             WorkSeeder::class,
             FriendSeeder::class,
+            FriendRequestSeeder::class,
         ]);
     }
 }

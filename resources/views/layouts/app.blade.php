@@ -67,8 +67,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-                        <li class="nav-item">
+                        <li class="nav-item me-3 d-flex">
                             <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                            @auth
+                                <a class="nav-link active" aria-current="page" href="{{route('avatarPage')}}">Avatar</a>
+                                <a class="nav-link active" aria-current="page" href="{{route('friends')}}">Friends</a>
+                            @endauth
                         </li>
 
                         @guest
@@ -77,11 +81,7 @@
                         @endguest
 
                         @auth
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{route('avatarPage')}}">Avatar</a>
-                            </li>
-
-                            <li><a class="nav-link d-lg-none" href="#">Setting</a></li>
+                            <li><a class="nav-link d-lg-none" href="{{route('setting')}}">Setting</a></li>
                             <li><a class="nav-link d-lg-none" href="{{route('logout')}}">Log Out</a></li>
 
                             <li class="border border-1 border-light rounded-pill"><a class="nav-link" href="{{route('topUpPage')}}"><i class="bi bi-coin"></i> {{Auth::user()->coin}} <i class="bi bi-plus-lg"></i></a></li>

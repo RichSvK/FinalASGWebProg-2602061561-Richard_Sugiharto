@@ -1,19 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Friend List')
 
 @section('content')
-    <div class="justify-content-center my-3 px-0">
-        <form class="d-flex px-5 w-100" role="search" method="GET">
-            <input class="form-control me-2" type="search" placeholder="Search Work / Profession" aria-label="Search" name="search">
-            <select class="form-select me-2" aria-label="Gender filter" style="width: 100px;" name="gender">
-                <option value="all" @if(request('gender') === 'all') selected @endif>All Gender</option>
-                <option value="male" @if(request('gender') === 'male') selected @endif>Male</option>
-                <option value="female" @if(request('gender') === 'female') selected @endif>Female</option>
-            </select>
-        </form>
-    </div>
-
     <div class="d-flex flex-wrap justify-content-center my-3">
         @forelse ($users as $user)
             <div class="col-12 col-md-3 border border-3 border-dark p-2 m-2 d-flex flex-column justify-content-between">
@@ -34,16 +23,17 @@
                     </ul>
                 </div>
 
-                <form action="{{route('addFriend')}}" method="POST" class="d-flex justify-content-center align-self-end">
+                <form action="{{route('unfriend')}}" method="POST" class="d-flex justify-content-center align-self-end">
                     @csrf
-                    <button type="submit" class="btn btn-dark"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+                    @method('DELETE')
+                    <input type="hidden" name="friendId" value="{{$user->id}}">
+                    <button type="submit" class="btn btn-dark"><i class="bi bi-x"></i></button>
                 </form>
             </div>
         @empty
             <div class="alert alert-danger">
-                No users found.
+                No friends found.
             </div>
         @endforelse
-
     </div>
 @endsection
