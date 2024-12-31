@@ -13,19 +13,18 @@ class AvatarSeeder extends Seeder
      */
     public function run(): void
     {
-        $avatars = [
-            'bear_1.jpg',
-            'bear_2.jpg',
-            'bear_3.jpg',
-            'dragon.jpg',
-            'lion.jpg',
-            'snake.jpg',
+        $avatarsData = [
+            ['name' => 'Default', 'avatar' => 'default.jpg', 'price' => 0],
+            ['name' => 'Bear 1', 'avatar' => 'bear_1.jpg', 'price' => 0],
+            ['name' => 'Bear 2', 'avatar' => 'bear_2.jpg', 'price' => 0],
+            ['name' => 'Bear 3', 'avatar' => 'bear_3.jpg', 'price' => 0],
+            ['name' => 'Snake', 'avatar' => 'snake.jpg', 'price' => 50],
+            ['name' => 'Lion', 'avatar' => 'lion.jpg', 'price' => 75000],
+            ['name' => 'Dragon', 'avatar' => 'dragon.jpg', 'price' => 100000],
         ];
 
-        foreach ($avatars as $avatar) {
-            Avatar::create([
-                'avatar' => $avatar,
-            ]);
+        foreach ($avatarsData as $data) {
+            Avatar::create($data);
         }
     }
 }

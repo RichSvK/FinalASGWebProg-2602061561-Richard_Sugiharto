@@ -35,7 +35,7 @@
 
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{route('avatar')}}">Avatar</a>
+                                <a class="nav-link active" aria-current="page" href="{{route('avatarPage')}}">Avatar</a>
                             </li>
 
                             <li><a class="nav-link d-lg-none" href="#">Setting</a></li>

@@ -14,7 +14,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::where('visibility', '=', 'visible')->with('works');
+        $users = User::where('visibility', '=', 'visible')
+            ->with('works')
+            ->join('avatar', 'users.avatar_profile', '=', 'avatar.id');
 
         if($request->has('search') && $request->search != ''){
             $users = $users->whereHas('works', function ($query) use ($request) {
@@ -26,7 +28,10 @@ class HomeController extends Controller
             $users = $users->where('gender', 'like', $request->gender);
         }
 
-        $users = $users->paginate(10)->withQueryString();
+        $users = $users
+            ->select('users.*', 'avatar.avatar as avatar')
+            ->paginate(10)
+            ->withQueryString();
         return view('home', compact('users'));
     }
 }

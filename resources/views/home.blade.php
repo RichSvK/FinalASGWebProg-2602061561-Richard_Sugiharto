@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
+
 @section('content')
     <div class="justify-content-center my-3 px-0">
         <form class="d-flex px-5 w-100" role="search" method="GET">
@@ -17,7 +19,7 @@
             <div class="col-12 col-md-3 border border-3 border-dark p-2 m-2 d-flex flex-column justify-content-between">
                 <div class="d-flex flex-column">
                     <div class="text-center">
-                        <img src="{{asset('assets/' . $user->avatar_profile)}}" alt="Profile" class="rounded-circle" style="width: 100px; height: 100px;">
+                        <img src="{{asset('assets/' . $user->avatar)}}" alt="Profile" class="rounded-circle" style="width: 100px; height: 100px;">
                     </div>
                     <h5 class="text-center">{{$user->name}}</h5>
                     <p class="mb-1">Email: {{$user->email}}</p>

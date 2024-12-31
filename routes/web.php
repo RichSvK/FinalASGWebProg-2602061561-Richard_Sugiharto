@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TopUpController;
+use App\Http\Controllers\UserAvatarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -21,3 +23,8 @@ Route::post('/register/payment', [PaymentController::class, 'pay'])->name('regis
 
 Route::get('/topup', [TopUpController::class, 'index'])->name('topUpPage');
 Route::post('/topup', [TopUpController::class, 'topUp'])->name('topUp');
+
+
+Route::get('/avatar', [AvatarController::class, 'index'])->name('avatarPage');
+Route::post('/buy-avatar', [UserAvatarController::class, 'create'])->name('buyAvatar');
+Route::post('/equip-avatar', [UserAvatarController::class, 'equip'])->name('equipAvatar');

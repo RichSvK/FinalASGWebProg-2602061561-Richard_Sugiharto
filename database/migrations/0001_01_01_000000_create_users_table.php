@@ -23,7 +23,8 @@ return new class extends Migration
             $table->timestamp('birth_date');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar_profile')->default('default.jpg');
+
+            $table->string('avatar_profile')->default(1);
 
             $table->string('visibility')->default('visible');
             $table->softDeletes();
