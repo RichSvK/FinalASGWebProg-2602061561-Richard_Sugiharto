@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('gender', ['male', 'female']);
+            $table->enum('gender', ['Male', 'Female']);
             $table->string('mobile_number')->unique();
             $table->string('linkedin_profile');
             $table->integer('coin');
@@ -23,6 +23,9 @@ return new class extends Migration
             $table->timestamp('birth_date');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar_profile')->default('default.jpg');
+
+            $table->string('visibility')->default('visible');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

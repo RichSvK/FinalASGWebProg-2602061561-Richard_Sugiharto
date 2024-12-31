@@ -19,8 +19,9 @@ class PaymentController extends Controller
             ]);
         }
 
+        // 100 coin bonus
         $user->update([
-            'coin' => $user->coin + $request->pay,
+            'coin' => $user->coin + $request->pay + 100,
         ]);
 
         return response()->json([

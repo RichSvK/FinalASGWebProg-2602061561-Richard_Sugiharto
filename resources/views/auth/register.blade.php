@@ -119,6 +119,20 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="works" class="col-md-4 col-form-label text-md-end">{{ __('Works') }}</label>
+
+                            <div class="col-md-6">
+                                <div id="works-container">
+                                    <div class="work-input-group mb-2 d-flex">
+                                        <input type="text" class="form-control" name="works[]" placeholder="Enter your work" style="max-width: 80%">
+                                        <button type="button" class="btn btn-danger btn-sm remove-work ms-1" style="width: 40px">X</button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm mt-2" id="add-work">Add Work</button>
+                            </div>
+                        </div>
+
                         <div class="mb-0 text-center d-flex flex-row justify-content-center">
                             <label for="registration" class="fw-bold">Registration Price:</label>
                             <input
@@ -142,4 +156,35 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('custom_js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('add-work').addEventListener('click', function () {
+                var workContainer = document.getElementById('works-container');
+                var newWorkInputGroup = document.createElement('div');
+                newWorkInputGroup.classList.add('work-input-group', 'mb-2', 'd-flex');
+                newWorkInputGroup.innerHTML = `
+                    <input type="text" class="form-control" name="works[]" placeholder="Enter your work" style="max-width: 80%">
+                    <button type="button" class="btn btn-danger btn-sm remove-work ms-1" style="width: 40px;">X</button>
+                `;
+                workContainer.appendChild(newWorkInputGroup);
+
+                // Add event listener to remove button
+                newworkInputGroup.querySelector('.remove-work').addEventListener('click', function () {
+                    workContainer.removeChild(newWorkInputGroup);
+                });
+            });
+
+            // Remove work input field if user clicks on remove button
+            var removeButtons = document.querySelectorAll('.remove-work');
+            removeButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var workGroup = button.closest('.work-input-group');
+                    workGroup.remove();
+                });
+            });
+        });
+    </script>
 @endsection

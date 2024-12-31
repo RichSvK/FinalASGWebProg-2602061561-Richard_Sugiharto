@@ -21,11 +21,12 @@ class UserSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => Hash::make('12345678'),
-                'gender' => $faker->randomElement(['male', 'female']),
+                'gender' => $faker->randomElement(['Male', 'Female']),
                 'mobile_number' => $faker->phoneNumber,
                 'linkedin_profile' => 'https://www.linkedin.com/in/' . $faker->userName,
                 'coin' => $faker->numberBetween(0, 1000),
                 'birth_date' => $faker->dateTimeBetween('-50 years', '-20 years'),
+                'avatar_profile' => 'default.jpg',
             ]);
         }
     }

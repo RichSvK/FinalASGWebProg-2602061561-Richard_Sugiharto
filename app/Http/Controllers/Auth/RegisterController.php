@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Work;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -57,11 +58,13 @@ class RegisterController extends Controller
             'gender' => ['required', 'in:Male,Female'],
             'registration' => ['required', 'numeric', 'between:100000,125000'],
             'birth' => ['required', 'date', 'before:today'],
+            'works' => ['required', 'array', 'min:3'],
+            'works.*' => ['required', 'string', 'max:255'],
         ]);
     }
 
     protected function create(array $data){
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'gender' => $data['gender'],
@@ -71,5 +74,14 @@ class RegisterController extends Controller
             'birth_date' => $data['birth'],
             'password' => Hash::make($data['password']),
         ]);
+
+        foreach($data['works'] as $work){
+            Work::create([
+                'userId' => $user->id,
+                'work' => $work,
+            ]);
+        }
+
+        return $user;
     }
 }

@@ -10,67 +10,64 @@
     <title>@yield('title')</title>
 
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     @yield('custom_css')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
+            <div class="d-flex justify-content-between w-100 ps-3">
+                <a class="navbar-brand">Job Richard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                        </li>
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                            <li><a class="nav-link" href="{{route('login')}}">Login</a></li>
+                            <li><a class="nav-link" href="{{route('register')}}">Register</a></li>
+                        @endguest
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{route('avatar')}}">Avatar</a>
+                            </li>
+
+                            <li><a class="nav-link d-lg-none" href="#">Setting</a></li>
+                            <li><a class="nav-link d-lg-none" href="{{route('logout')}}">Log Out</a></li>
+
+                            <li class="border border-1 border-light rounded-pill"><a class="nav-link" href="{{route('topUpPage')}}"><i class="bi bi-coin"></i> {{Auth::user()->coin}} <i class="bi bi-plus-lg"></i></a></li>
+
+                            <li class="nav-item dropdown d-none d-lg-block me-3">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-gear"></i>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    @auth
+                                        <li><a class="dropdown-item" href="#">Setting</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <form action="{{route('logout')}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item fw-bold">Log Out</button>
+                                            </form>
+                                        </li>
+                                    @endauth
+                                </ul>
                             </li>
-                        @endguest
+                        @endauth
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="container">
-            @yield('content')
-        </main>
+        @yield('content')
     </div>
     @yield('custom_js')
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
