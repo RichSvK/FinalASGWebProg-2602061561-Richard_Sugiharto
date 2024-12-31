@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->enum('gender', ['male', 'female']);
             $table->string('mobile_number')->unique();
-            $table->string('linkedin_profile')->nullable();
+            $table->string('linkedin_profile');
             $table->integer('coin');
 
             $table->timestamp('birth_date');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

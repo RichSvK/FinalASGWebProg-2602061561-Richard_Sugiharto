@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])
+    ->middleware('user_auth')
+    ->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/register-payment', 'registerPayment')->name('registration_payment');
+Route::post('/register/payment', [PaymentController::class, 'pay'])->name('registerPay');
