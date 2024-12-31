@@ -11,9 +11,52 @@
 
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        #alert {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-out {
+            animation: fadeOut 5s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
     @yield('custom_css')
 </head>
 <body>
+    @php
+        if($errors->any()){
+            session()->flash('error', $errors->first());
+        }
+    @endphp
+
+    @if(session('message') != '')
+        <div class="alert alert-success fade-out" role="alert" id="alert">
+            {{session('message')}}
+            {{session()->forget('message')}}
+        </div>
+    @elseif(session('error') != '')
+        <div class="alert alert-danger fade-out" role="alert" id="alert">
+            {{session('error')}}
+            {{session()->forget('error')}}
+        </div>
+    @endif
+
     <div id="app">
         <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
             <div class="d-flex justify-content-between w-100 ps-3">
@@ -50,7 +93,7 @@
 
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     @auth
-                                        <li><a class="dropdown-item" href="#">Setting</a></li>
+                                        <li><a class="dropdown-item" href="{{route('setting')}}">Setting</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <form action="{{route('logout')}}" method="POST">
@@ -69,7 +112,18 @@
 
         @yield('content')
     </div>
+
     @yield('custom_js')
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alert = document.getElementById('alert');
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
 </body>
 </html>

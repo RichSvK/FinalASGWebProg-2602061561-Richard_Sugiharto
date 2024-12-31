@@ -29,6 +29,11 @@ class UserAvatarController extends Controller
         ]);
 
         $user = Auth::user();
+
+        if($user->visibility == 'invisible'){
+            session()->flash('error', 'You cannot equip the avatar while invisible');
+            return redirect()->route('setting');
+        }
         $user->avatar_profile = $request->avatarId;
         $user->save();
 
