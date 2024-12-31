@@ -14,9 +14,12 @@ class AvatarSeeder extends Seeder
     public function run(): void
     {
         $avatars = [
-            'avatar_1.png',
-            'avatar_2.png',
-            'avatar_3.png',
+            'bear_1.jpg',
+            'bear_2.jpg',
+            'bear_3.jpg',
+            'dragon.jpg',
+            'lion.jpg',
+            'snake.jpg',
         ];
 
         foreach ($avatars as $avatar) {
