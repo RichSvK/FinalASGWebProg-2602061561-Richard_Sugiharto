@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,11 @@ class HomeController extends Controller
 
         if($request->has('gender') && $request->gender !== 'all'){
             $users = $users->where('gender', 'like', $request->gender);
+        }
+
+        if(Auth::check()){
+            $user = Auth::user();
+            $users = $users->where('users.id', '!=', $user->id);
         }
 
         $users = $users

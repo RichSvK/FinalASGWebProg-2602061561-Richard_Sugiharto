@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use App\Models\UserAvatar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,22 @@ class UserAvatarController extends Controller
         ]);
 
         $user = Auth::user();
+        $avatar = Avatar::where('id', '=', $request->avatarId)
+            ->first();
+
+        if($user->coin < $avatar->price){
+            session()->flash('error', 'Insufficient coin');
+            return redirect()->route('avatarPage');
+        }
+
         UserAvatar::create([
             'userId' => $user->id,
             'avatarId' => $request->avatarId,
         ]);
+
+        $user->coin -= $avatar->price;
+        $user->avatar_profile = $request->avatarId;
+        $user->save();
 
         session()->flash('message', 'Avatar purchased successfully');
         return redirect()->route('avatarPage');

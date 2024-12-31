@@ -72,6 +72,7 @@
                             @auth
                                 <a class="nav-link active" aria-current="page" href="{{route('avatarPage')}}">Avatar</a>
                                 <a class="nav-link active" aria-current="page" href="{{route('friends')}}">Friends</a>
+                                <a class="nav-link active" aria-current="page" href="{{route('friendRequest')}}">Friend Request</a>
                             @endauth
                         </li>
 

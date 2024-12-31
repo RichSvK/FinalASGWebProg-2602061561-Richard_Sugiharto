@@ -36,6 +36,7 @@
 
                 <form action="{{route('addFriend')}}" method="POST" class="d-flex justify-content-center align-self-end">
                     @csrf
+                    <input type="hidden" name="friendId" value="{{$user->id}}">
                     <button type="submit" class="btn btn-dark"><i class="bi bi-hand-thumbs-up-fill"></i></button>
                 </form>
             </div>

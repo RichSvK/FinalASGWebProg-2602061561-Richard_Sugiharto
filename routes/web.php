@@ -35,5 +35,8 @@ Route::get('/setting', [UserController::class, 'index'])->name('setting');
 Route::post('/change-visibility', [UserController::class, 'changeVisibility'])->name('changeVisibility');
 
 Route::get('/friends', [FriendController::class, 'index'])->name('friends');
-Route::post('/add-friend', [FriendRequestController::class, 'addFriend'])->name('addFriend');
 Route::delete('/delete-friend', [FriendController::class, 'destroy'])->name('unfriend');
+
+Route::get('/friend-requests', [FriendRequestController::class, 'index'])->name('friendRequest');
+Route::post('/add-friend', [FriendRequestController::class, 'addFriend'])->name('addFriend');
+Route::delete('/cancel-friend-request', [FriendRequestController::class, 'destroy'])->name('cancelFriendRequest');
