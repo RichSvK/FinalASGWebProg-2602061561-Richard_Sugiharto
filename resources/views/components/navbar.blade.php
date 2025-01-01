@@ -12,31 +12,35 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                    <a class="nav-link {{request()->routeIs('home') ? 'active' : ''}}" aria-current="page" href="{{route('home')}}">Home</a>
                 </li>
 
                 <!-- Authenticated Links -->
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('avatarPage')}}">Avatar</a>
+                        <a class="nav-link {{request()->routeIs('avatarPage') ? 'active' : ''}}" href="{{route('avatarPage')}}">Avatar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('friends')}}">Friends</a>
+                        <a class="nav-link {{request()->routeIs('friends') ? 'active' : ''}}" href="{{route('friends')}}">Friends</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('friendRequest')}}">Friend Request</a>
+                        <a class="nav-link {{request()->routeIs('friendRequest') ? 'active' : ''}}" href="{{route('friendRequest')}}">Friend Request</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-lg-none" href="{{route('setting')}}">Setting</a>
+                        <a class="nav-link d-lg-none {{request()->routeIs('setting') ? 'active' : ''}}" href="{{route('setting')}}">Setting</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link d-lg-none" href="{{route('logout')}}">Log Out</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link border border-1 border-light rounded-pill ps-3" href="{{route('topUpPage')}}">
-                            <i class="bi bi-coin"></i> {{Auth::user()->coin}} <i class="bi bi-plus-lg"></i>
-                        </a>
-                    </li>
+
+                    @if (Auth::user()->coin >= 0)
+                        <li class="nav-item">
+                            <a class="nav-link border border-1 border-light rounded-pill ps-3" href="{{route('topUpPage')}}">
+                                <i class="bi bi-coin"></i> {{Auth::user()->coin}} <i class="bi bi-plus-lg"></i>
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="nav-item dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-gear"></i>

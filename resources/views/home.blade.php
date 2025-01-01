@@ -22,7 +22,7 @@
     <div class="container">
         <div class="justify-content-center my-3 px-0">
             <form class="d-flex px-5 w-100" role="search" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Search Work / Profession" aria-label="Search" name="search">
+                <input class="form-control me-2" type="search" placeholder="Search Work / Profession" aria-label="Search" name="search" value="{{request('search')}}">
                 <select class="form-select me-2" aria-label="Gender filter" style="width: 100px;" name="gender">
                     <option value="all" @if(request('gender') === 'all') selected @endif>All Gender</option>
                     <option value="male" @if(request('gender') === 'male') selected @endif>Male</option>

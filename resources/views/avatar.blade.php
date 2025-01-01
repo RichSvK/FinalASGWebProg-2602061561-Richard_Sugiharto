@@ -13,7 +13,7 @@
                     <h5 class="text-center">{{$avatar->name}}</h5>
                     <h6 class="text-center">{{$avatar->price}} Coin</h6>
 
-                    @if ($avatar->userId == null)
+                    @if ($avatar->userId == null || $avatar->userId != Auth::id())
                         <form action="{{route('buyAvatar')}}" method="POST" class="d-flex justify-content-center">
                             @csrf
                             <input type="hidden" name="avatarId" value="{{$avatar->id}}">

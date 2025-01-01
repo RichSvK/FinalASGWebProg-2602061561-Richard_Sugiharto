@@ -17,6 +17,16 @@
                     <p class="mb-2">Email: {{$user->email}}</p>
                     <p class="mb-2">Gender: {{$user->gender}}</p>
                     <p class="mb-2">Birth Date: {{\Carbon\Carbon::parse($user->birth_date)->format('d F Y')}}</p>
+                    <p class="mb-1 teks">LinkedIn: {{$user->linkedin_profile}}</p>
+                    <p class="mb-1 teks">Works</p>
+                    <ul class="ps-4">
+                        @forelse ($user->works as $work)
+                            <li class="teks">{{$work->work}}</li>
+                        @empty
+                            <li class="teks">No works found.</li>
+                        @endforelse
+                    </ul>
+
                     <p class="mb-2">Visible: {{$user->visibility}}</p>
 
                     <form action="{{route('changeVisibility')}}" method="post">

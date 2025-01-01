@@ -13,7 +13,7 @@ class AvatarController extends Controller
         // Avatar 1, 2, 3 are default for invisible avatars
         $avatars = DB::table('avatar as a')
             ->leftJoin(
-                DB::raw('(SELECT * FROM user_avatar WHERE userId = 1) as ua_sub'), // Subquery
+                DB::raw('(SELECT * FROM user_avatar WHERE userId = ' . Auth::user()->id .') as ua_sub'), // Subquery
                 'a.id', '=', 'ua_sub.avatarId'
             )
             ->where('a.id', '>', 4)

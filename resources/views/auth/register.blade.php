@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Register')
+
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -172,7 +174,7 @@
                 workContainer.appendChild(newWorkInputGroup);
 
                 // Add event listener to remove button
-                newworkInputGroup.querySelector('.remove-work').addEventListener('click', function () {
+                newWorkInputGroup.querySelector('.remove-work').addEventListener('click', function () {
                     workContainer.removeChild(newWorkInputGroup);
                 });
             });
