@@ -3,17 +3,17 @@
 @section('content')
     <div class="d-flex flex-column align-items-center">
         <div class="col-md-12 text-center mt-3 mb-3">
-            <h1>Register Payment</h1>
+            <h1>@lang('lang.Register Payment')</h1>
         </div>
 
         <div class="col-12 col-md-6">
             <div class="card">
-                <div class="card-header">Payment</div>
+                <div class="card-header">@lang()</div>
                 <div class="card-body">
                     <form id="payment-form">
                         <div class="d-flex">
                             <p class="fw-bold">
-                                Registration Price:
+                                @lang('lang.Registration Price'):
                             </p>
                             <p id="price" class="ms-2">
                                 {{-Auth::user()->coin}}
@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="form-control mb-2 border-0 p-0">
-                            <label for="pay">Enter Payment Amount:</label>
+                            <label for="pay">@lang('lang.Enter Payment Amount'):</label>
                             <input type="text" id="pay" name="pay">
                         </div>
                         @if ($errors->any())
@@ -29,7 +29,7 @@
                                 {{$errors->first()}}
                             </div>
                         @endif
-                        <button class="btn btn-primary" type="submit">Pay</button>
+                        <button class="btn btn-primary" type="submit">@lang('lang.Pay')</button>
                     </form>
                 </div>
             </div>

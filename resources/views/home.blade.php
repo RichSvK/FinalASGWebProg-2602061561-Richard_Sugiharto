@@ -22,11 +22,11 @@
     <div class="container">
         <div class="justify-content-center my-3 px-0">
             <form class="d-flex px-5 w-100" role="search" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Search Work / Profession" aria-label="Search" name="search" value="{{request('search')}}">
+                <input class="form-control me-2" type="search" placeholder="@lang('lang.Search Work / Profession')" aria-label="Search" name="search" value="{{request('search')}}">
                 <select class="form-select me-2" aria-label="Gender filter" style="width: 100px;" name="gender">
-                    <option value="all" @if(request('gender') === 'all') selected @endif>All Gender</option>
-                    <option value="male" @if(request('gender') === 'male') selected @endif>Male</option>
-                    <option value="female" @if(request('gender') === 'female') selected @endif>Female</option>
+                    <option value="all" @if(request('gender') === 'all') selected @endif>@lang('lang.All Gender')</option>
+                    <option value="male" @if(request('gender') === 'male') selected @endif>@lang('lang.Male')</option>
+                    <option value="female" @if(request('gender') === 'female') selected @endif>@lang('lang.Female')</option>
                 </select>
             </form>
         </div>
@@ -39,15 +39,15 @@
                             <img src="{{asset('assets/' . $user->avatar)}}" alt="Profile" class="rounded-circle" style="width: 100px; height: 100px;">
                         </div>
                         <h5 class="text-center">{{$user->name}}</h5>
-                        <p class="mb-1 teks">Email: {{$user->email}}</p>
-                        <p class="mb-1 teks">Gender: {{$user->gender}}</p>
-                        <p class="mb-1 teks">LinkedIn: {{$user->linkedin_profile}}</p>
-                        <p class="mb-1 teks">Works</p>
+                        <p class="mb-1 teks">@lang('lang.Email'): {{$user->email}}</p>
+                        <p class="mb-1 teks">@lang('lang.Gender'): {{$user->gender}}</p>
+                        <p class="mb-1 teks">@lang('lang.LinkedIn'): {{$user->linkedin_profile}}</p>
+                        <p class="mb-1 teks">@lang('lang.Works')</p>
                         <ul class="ps-3">
                             @forelse ($user->works as $work)
                                 <li class="teks">{{$work->work}}</li>
                             @empty
-                                <li class="teks">No works found.</li>
+                                <li class="teks">@lang('lang.No works found.')</li>
                             @endforelse
                         </ul>
                     </div>
@@ -64,7 +64,7 @@
                 </div>
             @empty
                 <div class="alert alert-danger">
-                    No users found.
+                    @lang('lang.No users found.')
                 </div>
             @endforelse
         </div>

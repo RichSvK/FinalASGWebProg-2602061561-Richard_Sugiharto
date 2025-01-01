@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="text-center mt-4">Friend Request</h2>
+        <h2 class="text-center mt-4">@lang('lang.Friend Request')</h2>
 
         <ul class="list-group d-flex flex-column justify-content-center align-items-center">
             @forelse ($friend_requests as $request)
@@ -23,12 +23,12 @@
                 </li>
             @empty
                 <div class="alert alert-danger">
-                    No friend request found.
+                    @lang('lang.No friend request found.')
                 </div>
             @endforelse
         </ul>
 
-        <h2 class="text-center mt-4">Incoming Request</h2>
+        <h2 class="text-center mt-4">@lang('lang.Incoming Request')</h2>
 
         <ul class="list-group d-flex flex-column justify-content-center align-items-center">
             @forelse ($incoming_requests as $request)
@@ -56,7 +56,7 @@
                 </li>
             @empty
                 <div class="alert alert-danger">
-                    No friend request found.
+                    @lang('lang.No incoming request found.')
                 </div>
             @endforelse
         </ul>

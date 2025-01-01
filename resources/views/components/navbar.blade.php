@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <!-- Brand Name -->
-        <a class="navbar-brand" href="{{route('home')}}">Job Richard</a>
+        <a class="navbar-brand" href="{{route('home')}}">@lang('lang.Job Richard')</a>
 
         <!-- Navbar Toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,25 +12,25 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{request()->routeIs('home') ? 'active' : ''}}" aria-current="page" href="{{route('home')}}">Home</a>
+                    <a class="nav-link {{request()->routeIs('home') ? 'active' : ''}}" aria-current="page" href="{{route('home')}}">@lang('lang.Home')</a>
                 </li>
 
                 <!-- Authenticated Links -->
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link {{request()->routeIs('avatarPage') ? 'active' : ''}}" href="{{route('avatarPage')}}">Avatar</a>
+                        <a class="nav-link {{request()->routeIs('avatarPage') ? 'active' : ''}}" href="{{route('avatarPage')}}">@lang('lang.Avatar')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{request()->routeIs('friends') ? 'active' : ''}}" href="{{route('friends')}}">Friends</a>
+                        <a class="nav-link {{request()->routeIs('friends') ? 'active' : ''}}" href="{{route('friends')}}">@lang('lang.Friend')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{request()->routeIs('friendRequest') ? 'active' : ''}}" href="{{route('friendRequest')}}">Friend Request</a>
+                        <a class="nav-link {{request()->routeIs('friendRequest') ? 'active' : ''}}" href="{{route('friendRequest')}}">@lang('lang.Friend Request')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-lg-none {{request()->routeIs('setting') ? 'active' : ''}}" href="{{route('setting')}}">Setting</a>
+                        <a class="nav-link d-lg-none {{request()->routeIs('setting') ? 'active' : ''}}" href="{{route('setting')}}">@lang('lang.Setting')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-lg-none" href="{{route('logout')}}">Log Out</a>
+                        <a class="nav-link d-lg-none" href="{{route('logout')}}">@lang('lang.Log Out')</a>
                     </li>
 
                     @if (Auth::user()->coin >= 0)
@@ -46,12 +46,12 @@
                             <i class="bi bi-gear"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
-                            <li><a class="dropdown-item" href="{{route('setting')}}">Setting</a></li>
+                            <li><a class="dropdown-item" href="{{route('setting')}}">@lang('lang.Setting')</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form action="{{route('logout')}}" method="POST">
                                     @csrf
-                                    <button type="submit" class="dropdown-item fw-bold">Log Out</button>
+                                    <button type="submit" class="dropdown-item fw-bold">@lang('lang.Log Out')</button>
                                 </form>
                             </li>
                         </ul>
@@ -61,10 +61,10 @@
                 <!-- Guest Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('login')}}">Login</a>
+                        <a class="nav-link" href="{{route('login')}}">@lang('lang.Login')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('register')}}">Register</a>
+                        <a class="nav-link" href="{{route('register')}}">@lang('lang.Register')</a>
                     </li>
                 @endguest
             </ul>

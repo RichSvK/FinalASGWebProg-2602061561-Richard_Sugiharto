@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TopUpController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -53,3 +54,12 @@ Route::middleware('auth')->group(function(){
     Route::view('/register-payment', 'registerPayment')->name('registration_payment');
     Route::post('/register/payment', [PaymentController::class, 'pay'])->name('registerPay');
 });
+
+// Change Language
+Route::get('/set-locale', function(Request $request){
+    $request->validate([
+        'language' => 'required|string|in:en,id',
+    ]);
+    $request->session()->put('locale', $request->language);
+    return redirect()->back();
+})->name('setLocale');
