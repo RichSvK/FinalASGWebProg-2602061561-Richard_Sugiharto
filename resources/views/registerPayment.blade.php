@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('lang.Register Payment'))
+
 @section('content')
     <div class="d-flex flex-column align-items-center">
         <div class="col-md-12 text-center mt-3 mb-3">

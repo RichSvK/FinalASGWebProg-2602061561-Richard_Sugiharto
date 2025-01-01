@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('lang.Setting'))
+
 @section('content')
     <div class="d-flex flex-column align-items-center">
         <div class="col-md-12 text-center mt-3 mb-3">
@@ -15,7 +17,13 @@
                     </div>
 
                     <p class="mb-2">@lang('lang.Email'): {{$user->email}}</p>
-                    <p class="mb-2">@lang('lang.Gender'): {{$user->gender}}</p>
+                    <p class="mb-2">@lang('lang.Gender'):
+                        @if ($user->gender == 'Male')
+                            @lang('lang.Male')
+                        @else
+                            @lang('lang.Female')
+                        @endif
+                    </p>
                     <p class="mb-2">@lang('lang.Birth Date'): {{\Carbon\Carbon::parse($user->birth_date)->format('d F Y')}}</p>
                     <p class="mb-1 teks">@lang('lang.LinkedIn'): {{$user->linkedin_profile}}</p>
                     <p class="mb-1 teks">@lang('lang.Works')</p>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', __('lang.Home'))
 
 @section('custom_css')
     <style>
@@ -40,7 +40,15 @@
                         </div>
                         <h5 class="text-center">{{$user->name}}</h5>
                         <p class="mb-1 teks">@lang('lang.Email'): {{$user->email}}</p>
-                        <p class="mb-1 teks">@lang('lang.Gender'): {{$user->gender}}</p>
+
+                        <p class="mb-2 teks">@lang('lang.Gender'):
+                            @if ($user->gender == 'Male')
+                                @lang('lang.Male')
+                            @else
+                                @lang('lang.Female')
+                            @endif
+                        </p>
+
                         <p class="mb-1 teks">@lang('lang.LinkedIn'): {{$user->linkedin_profile}}</p>
                         <p class="mb-1 teks">@lang('lang.Works')</p>
                         <ul class="ps-3">

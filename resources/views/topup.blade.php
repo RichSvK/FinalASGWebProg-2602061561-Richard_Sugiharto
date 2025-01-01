@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Top Up')
+@section('title', __('lang.Top Up'))
 
 @section('content')
     <div class="container d-flex justify-content-center my-3">

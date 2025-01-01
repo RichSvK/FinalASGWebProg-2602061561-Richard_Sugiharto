@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Avatar')
+@section('title', __('lang.Avatar'))
 
 @section('content')
     <h2 class="text-center mt-4">@lang('lang.Avatar')</h2>

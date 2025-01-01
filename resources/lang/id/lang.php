@@ -37,11 +37,11 @@ return [
     'Male' => 'Pria',
     'Female' => 'Wanita',
     'No users found.' => 'Tidak ada pengguna ditemukan.',
-
     'Register Payment' => 'Pembayaran Pendaftaran',
     'Payment' => 'Pembayaran',
     'Registration Price' => ' Harga Pendaftaran',
     'Enter Payment Amount' => 'Masukkan Jumlah Pembayaran',
     'Pay' => 'Bayar',
+    'Avatar Gift' => 'Hadiah Avatar',
 ];
 ?>

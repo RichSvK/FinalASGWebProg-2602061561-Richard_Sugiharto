@@ -32,17 +32,16 @@ return [
     'Equip' => 'Equip',
     'No avatar' => 'No avatar',
     'Give Avatar to' => 'Give Avatar to',
-
     'Search Work / Profession' => 'Search Work / Profession',
     'All Gender' => 'All Gender',
     'Male' => 'Male',
     'Female' => 'Female',
     'No users found.' => 'No users found.',
-
     'Register Payment' => 'Register Payment',
     'Payment' => 'Payment',
     'Registration Price' => ' Registration Price',
     'Enter Payment Amount' => 'Enter Payment Amount',
     'Pay' => 'Pay',
+    'Avatar Gift' => 'Avatar Gift',
 ];
 ?>

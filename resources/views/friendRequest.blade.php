@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Friend Request')
+@section('title', __('lang.Friend Request'))
 
 @section('content')
     <div class="container">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Avatar Gift')
+@section('title', __('lang.Avatar Gift'))
 
 @section('content')
     <div class="container">
