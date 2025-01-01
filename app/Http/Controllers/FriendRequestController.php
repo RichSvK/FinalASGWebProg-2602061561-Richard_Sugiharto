@@ -14,9 +14,15 @@ class FriendRequestController extends Controller
         $user = Auth::user();
         $friend_requests = FriendRequest::where('userId', '=', $user->id)
             ->join('users', 'friend_request.friendId', '=', 'users.id')
-            ->select('friend_request.id as id', 'users.name as name', 'users.email as email')
+            ->select('friend_request.id as id', 'users.name as name', 'users.email as email', 'users.id as userId')
             ->get();
-        return view('friendRequest', compact('friend_requests'));
+
+        $incoming_requests = FriendRequest::where('friendId', '=', $user->id)
+            ->join('users', 'friend_request.userId', '=', 'users.id')
+            ->select('friend_request.id as id', 'users.name as name', 'users.email as email', 'users.id as userId')
+            ->get();
+
+        return view('friendRequest', compact('friend_requests', 'incoming_requests'));
     }
 
     public function addFriend(Request $request){
@@ -77,11 +83,18 @@ class FriendRequestController extends Controller
         $request->validate([
             'request_id' => 'required|integer',
         ]);
+
         $friend_request = FriendRequest::where('id', '=', $request->request_id)
             ->first();
 
         if($friend_request){
             $friend_request->delete();
+
+            if($request->has('status') && $request->status === 'reject'){
+                session()->flash('message', 'Friend request rejected');
+                return redirect()->route('friendRequest');
+            }
+
             session()->flash('message', 'Friend request cancelled');
             return redirect()->route('friendRequest');
         }
