@@ -17,7 +17,7 @@ class TopUpController extends Controller
             'coin' => $user->coin + 100,
         ]);
 
-        session()->flash('success', 'Top up successfully');
+        session()->flash('message', 'Top up successfully');
         return redirect()->route('home');
     }
 }

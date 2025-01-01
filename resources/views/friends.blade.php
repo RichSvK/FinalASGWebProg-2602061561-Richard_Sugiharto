@@ -36,4 +36,5 @@
             </div>
         @endforelse
     </div>
+    {{$users->links()}}
 @endsection

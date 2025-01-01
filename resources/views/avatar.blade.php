@@ -21,11 +21,11 @@
                         </form>
                     @else
                         @if ($avatar->id == Auth::user()->avatar_profile)
-                            <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary" disabled>
-                                    Equipped
-                                </button>
-                            </div>
+                            <form action="{{route('unequipAvatar')}}" method="POST" class="d-flex justify-content-center">
+                                @csrf
+                                <input type="hidden" name="avatarId" value="{{$avatar->id}}">
+                                <button type="submit" class="btn btn-primary">Unequip</i></button>
+                            </form>
                         @else
                             <form action="{{route('equipAvatar')}}" method="POST" class="d-flex justify-content-center">
                                 @csrf
@@ -38,7 +38,7 @@
             </div>
         @empty
             <div class="alert alert-danger">
-                No users found.
+                No avatar found.
             </div>
         @endforelse
     </div>

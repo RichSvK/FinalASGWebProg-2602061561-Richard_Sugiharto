@@ -36,7 +36,7 @@ class HomeController extends Controller
 
         $users = $users
             ->select('users.*', 'avatar.avatar as avatar')
-            ->paginate(10)
+            ->paginate(8)
             ->withQueryString();
         return view('home', compact('users'));
     }

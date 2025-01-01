@@ -3,6 +3,7 @@
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\FriendRequestController;
+use App\Http\Controllers\GiftController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TopUpController;
 use App\Http\Controllers\UserAvatarController;
@@ -40,3 +41,8 @@ Route::delete('/delete-friend', [FriendController::class, 'destroy'])->name('unf
 Route::get('/friend-requests', [FriendRequestController::class, 'index'])->name('friendRequest');
 Route::post('/add-friend', [FriendRequestController::class, 'addFriend'])->name('addFriend');
 Route::delete('/cancel-friend-request', [FriendRequestController::class, 'destroy'])->name('cancelFriendRequest');
+
+Route::post('/unequip-avatar', [UserAvatarController::class, 'unequip'])->name('unequipAvatar');
+
+Route::get('/give-avatar/{user}', [GiftController::class, 'givePage'])->name('avatarGift');
+Route::post('/give/{user}/{avatar}', [GiftController::class, 'give'])->name('giveAvatar');

@@ -16,7 +16,7 @@ class FriendController extends Controller
             ->where('users.visibility', '=', 'visible')
             ->with('works')
             ->select('users.*', 'avatar.avatar as avatar')
-            ->paginate(10)
+            ->paginate(8)
             ->withQueryString();
 
         return view('friends', compact('users'));

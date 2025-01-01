@@ -20,10 +20,21 @@ class FriendSeeder extends Seeder
             for($i = 0; $i < $friend_num; $i++){
                 $friend = $users->random();
                 if($user->id !== $friend->id){
-                    Friend::create([
-                        'userId' => $user->id,
-                        'friendId' => $friend->id,
-                    ]);
+                    $check_friend = Friend::where('userId', $user->id)
+                        ->where('friendId', $friend->id)
+                        ->first();
+
+                    if($check_friend == null){
+                        Friend::create([
+                            'userId' => $user->id,
+                            'friendId' => $friend->id,
+                        ]);
+
+                        Friend::create([
+                            'userId' => $friend->id,
+                            'friendId' => $user->id,
+                        ]);
+                    }
                 } else {
                     $i--;
                 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avatar;
+use App\Models\User;
 use App\Models\UserAvatar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,15 @@ class UserAvatarController extends Controller
         $user->save();
 
         session()->flash('message', 'Avatar equipped successfully');
+        return redirect()->route('avatarPage');
+    }
+
+    public function unequip(Request $request){
+        $user = Auth::user();
+        $user->avatar_profile = 1;
+        $user->save();
+
+        session()->flash('message', 'Avatar unequipped successfully');
         return redirect()->route('avatarPage');
     }
 }
