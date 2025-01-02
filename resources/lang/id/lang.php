@@ -43,5 +43,17 @@ return [
     'Enter Payment Amount' => 'Masukkan Jumlah Pembayaran',
     'Pay' => 'Bayar',
     'Avatar Gift' => 'Hadiah Avatar',
+    'Name' => 'Nama',
+    'Mobile Number' => 'Nomor Telepon',
+    'Date of Birth' => 'Tanggal Lahir',
+    'Password' => 'Password',
+    'Confirm Password' => 'Konfirmasi Password',
+    'Enter your work' => 'Masukkan pekerjaan Anda',
+    'Add Work' => 'Tambahkan Pekerjaan',
+    'Remember Me' => 'Ingat Saya',
+    'Forgot Your Password?' => 'Lupa Password?',
+    'Reset Password' => 'Reset Password',
+    'Send Password Reset Link' => 'Kirim Tautan Reset Password',
+    'Please confirm your password before continuing.' => 'Harap konfirmasi password Anda sebelum melanjutkan.',
 ];
 ?>

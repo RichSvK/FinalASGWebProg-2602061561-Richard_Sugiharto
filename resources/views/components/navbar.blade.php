@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <!-- Brand Name -->
-        <a class="navbar-brand" href="{{route('home')}}">@lang('lang.Job Richard')</a>
+        <a class="navbar-brand" href="{{route('index')}}">@lang('lang.Job Richard')</a>
 
         <!-- Navbar Toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +63,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('login')}}">@lang('lang.Login')</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('register')}}">@lang('lang.Register')</a>
+                    </li>
+
+                    <li class="d-none d-lg-flex border border-1 rounded">
+                        <a class="nav-link @if(session('locale') === 'en' || session('locale') == null) bg-primary fw-bold text-light @endif" href="{{route('setLocale', ['language' => 'en'])}}">EN</a>
+                        <a class="nav-link @if(session('locale') === 'id') bg-primary fw-bold text-light @endif" href="{{route('setLocale', ['language' => 'id'])}}">ID</a>
+                    </li>
+
+                    <li class="d-flex d-lg-none">
+                        <a class="nav-link @if(session('locale') === 'en' || session('locale') == null) active @endif" href="{{route('setLocale', ['language' => 'en'])}}">EN</a>
+                        <a class="nav-link ms-3 @if(session('locale') === 'id') active @endif" href="{{route('setLocale', ['language' => 'id'])}}">ID</a>
                     </li>
                 @endguest
             </ul>

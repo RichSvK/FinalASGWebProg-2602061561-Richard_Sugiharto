@@ -43,5 +43,17 @@ return [
     'Enter Payment Amount' => 'Enter Payment Amount',
     'Pay' => 'Pay',
     'Avatar Gift' => 'Avatar Gift',
+    'Name' => 'Name',
+    'Mobile Number' => 'Mobile Number',
+    'Date of Birth' => 'Date of Birth',
+    'Password' => 'Password',
+    'Confirm Password' => 'Confirm Password',
+    'Enter your work' => 'Enter your work',
+    'Add Work' => 'Add Work',
+    'Remember Me' => 'Remember Me',
+    'Forgot Your Password?' => 'Forgot Your Password?',
+    'Reset Password' => 'Reset Password',
+    'Send Password Reset Link' => 'Send Password Reset Link',
+    'Please confirm your password before continuing.' => 'Please confirm your password before continuing.',
 ];
 ?>

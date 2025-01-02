@@ -7,10 +7,9 @@
         <div class="col-md-12 text-center mt-3 mb-3">
             <h1>@lang('lang.Register Payment')</h1>
         </div>
-
         <div class="col-12 col-md-6">
             <div class="card">
-                <div class="card-header">@lang()</div>
+                <div class="card-header">@lang('lang.Register')</div>
                 <div class="card-body">
                     <form id="payment-form">
                         <div class="d-flex">
