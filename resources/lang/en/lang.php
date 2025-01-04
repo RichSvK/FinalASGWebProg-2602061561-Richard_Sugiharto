@@ -1,6 +1,6 @@
 <?php
 return [
-    'Job Richard' => 'Job Richard',
+    'ConnectFriend' => 'ConnectFriend',
     'Home' => 'Home',
     'Avatar' => 'Avatar',
     'Friend' => 'Friend',
