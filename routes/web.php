@@ -50,7 +50,7 @@ Route::middleware('user_auth')->group(function () {
     Route::post('/give/{user}/{avatar}', [GiftController::class, 'give'])->name('giveAvatar');
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware('payment_middleware')->group(function(){
     Route::view('/register-payment', 'registerPayment')->name('registration_payment');
     Route::post('/register/payment', [PaymentController::class, 'pay'])->name('registerPay');
 });

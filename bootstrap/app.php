@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\PaidMiddleware;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\UserAuth;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'user_auth' => UserAuth::class,
+            'payment_middleware' => PaidMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

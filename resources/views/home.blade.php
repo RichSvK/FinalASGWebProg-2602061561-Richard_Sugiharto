@@ -21,7 +21,7 @@
 @section('content')
     <div class="container">
         <div class="justify-content-center my-3 px-0">
-            <form class="d-flex px-5 w-100" role="search" method="GET">
+            <form class="d-flex px-5 w-100" role="search" method="GET" action="{{route('home')}}">
                 <input class="form-control me-2" type="search" placeholder="@lang('lang.Search Work / Profession')" aria-label="Search" name="search" value="{{request('search')}}">
                 <select class="form-select me-2" aria-label="Gender filter" style="width: 100px;" name="gender">
                     <option value="all" @if(request('gender') === 'all') selected @endif>@lang('lang.All Gender')</option>
